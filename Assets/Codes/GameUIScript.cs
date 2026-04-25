@@ -21,6 +21,8 @@ public class GameUIScript : MonoBehaviour
 
     [SerializeField] TheEndScript theEndScript;
 
+    [SerializeField] CanvasGroup optionCanvasGroup;
+
     public static bool hasShownMenu = false;
 
     public static Vector3? savedPosition = null;
@@ -67,12 +69,12 @@ public class GameUIScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuCanvas.alpha < 0.01)
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuCanvas.alpha < 0.01 && optionCanvasGroup.alpha == 0)
         {
             pauseFadingPanel.FadeIn(duration);
             mouseLockToggle.SetCursorState(false);
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuCanvas.alpha > 0.99)
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuCanvas.alpha > 0.99 && optionCanvasGroup.alpha == 0)
         {
             pauseFadingPanel.FadeOut(duration);
             mouseLockToggle.SetCursorState(true);
